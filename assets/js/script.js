@@ -1,5 +1,5 @@
-// Click start button
-// Timer starts on click
+// Click start button $
+// Timer starts on click $
 // Question pops up
 // Wrong answers takes away time from clock
 // Game ends at 0
@@ -14,13 +14,18 @@ var questionsArr = [
         prompt: "What's is my last?",
         choices: ["Tyus", "Acovado", "Lime", "Orange"],
         correctAnswer: "Tyus"
+    }, {
+        prompt: "How old am I?",
+        choices: [23, 22, 21, 20],
+        correctAnswer: 23
     }
 ]
 
 var questionIndex;
 var timeRem = document.getElementById("time-remaining");
-var secondsRemaining = 30;
+var secondsRemaining = 60;
 
+// starts the 60 second timer and displays on screen 
 function quizTimer() {
     var interval = setInterval(function () {
         console.log("timer")
@@ -36,22 +41,24 @@ function quizTimer() {
 }
 
 function start(event) {
-    event.preventDefault()
-    quizTimer()
-    questionIndex = 0
-    showQuestion()
+    event.preventDefault();
+    quizTimer();
+    questionIndex = 0;
+    showQuestion();
 }
 
 function showQuestion() {
-    console.log("Showing question")
-    var currentQuestion = questionsArr[questionIndex]
-    var currentPrompt = currentQuestion.prompt
+    console.log("Showing question");
+    var currentQuestion = questionsArr[questionIndex];
+    var currentPrompt = currentQuestion.prompt;
+    document.getElementById("quizQuestions").innerHTML = currentPrompt;
     console.log(currentPrompt)
-    var questionChoices = questionsArr[questionIndex].choices
+    var questionChoices = currentQuestion.choices;
     for (var i = 0; i < questionChoices.length; i++) {
         var choiceButton = document.createElement("button");
-        choiceButton.addEventListener("click", checkAnswer)
-        choiceButton.textContent = questionChoices[i]
+        choiceButton.addEventListener("click", checkAnswer);
+        choiceButton.textContent = questionChoices[i];
+        document.body.appendChild(choiceButton);
         console.log(choiceButton)
     }
 
@@ -62,9 +69,9 @@ function showQuestion() {
 
 
 function checkAnswer(event) {
-    event.preventDefault()
-    console.log(event)
-    console.log(this)
+    event.preventDefault();
+    console.log(event);
+    console.log(this);
     console.log(event.target);
 
 
