@@ -24,6 +24,7 @@ var questionsArr = [
 var questionIndex;
 var timeRem = document.getElementById("time-remaining");
 var secondsRemaining = 60;
+var startButton = document.querySelector(".start-button");
 
 // starts the 60 second timer and displays on screen 
 function quizTimer() {
@@ -44,6 +45,7 @@ function start(event) {
     event.preventDefault();
     quizTimer();
     questionIndex = 0;
+    startButton.style.display = "none";
     showQuestion();
 }
 
@@ -79,8 +81,7 @@ function checkAnswer(event) {
     // if statement
     // edit the questionIndex after we check it
 }
-document.querySelector(".start-button").addEventListener("click", start);
-
+startButton.addEventListener("click", start);
 
 function endQuiz() {
     console.log("Ending!")
