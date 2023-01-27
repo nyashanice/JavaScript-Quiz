@@ -2,7 +2,7 @@
 var questionsArr;
 var interval;
 var timeRem = document.getElementById("time-remaining");
-var secondsRemaining = 60;
+var secondsRemaining = 6;
 var startButton = document.querySelector(".start-button");
 var currentQuestion;
 var currentPrompt;
@@ -13,8 +13,10 @@ var questionIndex = 0;
 var score = 0;
 var buttonHolder;
 var initials;
-var user;
+var userData;
+var newUserData;
 var storage;
+var highscoreData;
 var tryAgain = document.querySelector(".tryAgainButton");
 
 // storing questions with a question prompt, answer choices to choose from, and a correct answer 
@@ -126,24 +128,29 @@ function endQuiz() {
     document.getElementById('quizQuestions').innerHTML = '';
     tryAgain.style.display = 'block';
     initials = prompt('Enter your initials to be entered into the highscores list!');
-    user = {
+    // user = [];
+    userData = {
         initials: initials,
         points: score
     };
-    console.log(user);
-    saveStorage(user);
-    localStorage.setItem("user", JSON.stringify([user]));
+    // console.log(typeof user);
+    console.log(userData);
+    saveStorage(userData);
+    // localStorage.setItem("user", JSON.stringify([userData]));
 }
 
 // saves each new score in local storage
 function saveStorage(newScore) {
     // ????????????? can't add additional scores
     storage = JSON.parse(localStorage.getItem("user"));
-    storage.push(newScore);
+    // storage = localStorage.getItem(JSON.parse(user));
+    newUserData = newScore;
+    // console.log(typeof storage);
+    storage.push(newUserData);
+    console.log(storage);
     localStorage.setItem("user", JSON.stringify(storage));
 }
 
-// 
 function loadStorage() {
     storage = JSON.parse(localStorage.getItem("user"));
     console.log(storage)
