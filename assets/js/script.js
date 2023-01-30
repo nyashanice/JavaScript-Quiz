@@ -1,23 +1,27 @@
 // declaring all variables
+var timeRem = document.getElementById("time-remaining");
+var startButton = document.querySelector(".start-button");
+var tryAgain = document.querySelector(".tryAgainButton");
+var quizDescription = document.getElementById('descriptionText');
+
+var secondsRemaining = 60;
+var questionIndex = 0;
+var score = 0;
+
 var questionsArr;
 var interval;
-var timeRem = document.getElementById("time-remaining");
-var secondsRemaining = 6;
-var startButton = document.querySelector(".start-button");
 var currentQuestion;
 var currentPrompt;
 var questionChoices;
+var buttonHolder;
 var choiceButton;
 var rightAnswer;
-var questionIndex = 0;
-var score = 0;
-var buttonHolder;
 var initials;
 var userData;
 var newUserData;
 var storage;
 var highscoreData;
-var tryAgain = document.querySelector(".tryAgainButton");
+var viewScores;
 
 // storing questions with a question prompt, answer choices to choose from, and a correct answer 
 questionsArr = [
@@ -47,6 +51,7 @@ function start(event) {
     event.preventDefault();
     quizTimer();
     startButton.style.display = "none";
+    quizDescription.style.display = 'none';
     showQuestion();
 }
 
@@ -68,7 +73,8 @@ function showQuestion() {
     currentQuestion = questionsArr[questionIndex];
     currentPrompt = currentQuestion.prompt;
     rightAnswer = currentQuestion.correctAnswer;
-    document.getElementById("quizQuestions").innerHTML = (questionIndex + 1) + ": " + currentPrompt;
+    document.getElementById("quizQuestions").innerHTML = (questionIndex + 1) + ". " + currentPrompt;
+
 
     questionChoices = currentQuestion.choices;
     buttonHolder = document.getElementById("quiz-choices");
@@ -80,6 +86,16 @@ function showQuestion() {
         choiceButton.addEventListener("click", checkAnswer);
         choiceButton.textContent = questionChoices[i];
         buttonHolder.appendChild(choiceButton);
+
+        // styling for answer choice buttons
+        choiceButton.style.backgroundColor = '#F192E8';
+        choiceButton.style.borderRadius = '5px';
+        choiceButton.style.fontSize = '20px';
+        choiceButton.style.display = 'block';
+        choiceButton.style.marginLeft = '170px';
+        choiceButton.style.justifyContent = 'space-between';
+        choiceButton.style.marginTop = '5px';
+        choiceButton.style.border = 'none';
     }
 
 }
@@ -163,7 +179,36 @@ function loadStorage() {
 
 // ????????????? what does this do
 function renderHighscores() {
+    storage = JSON.parse(localStorage.getItem("user"));
+    console.log(storage);
+    if (storage !== null) {
+        console.log(storage[storage.length - 1].initials);
+        var lastInitials = storage[storage.length - 1].initials;
+        console.log(storage[storage.length - 1].points);
+        var lastScore = storage[storage.length - 1].points
+        document.getElementById("endScore").innerHTML = lastInitials + " got a score of " + lastScore
+        return;
+    }
+};
 
-}
-
+renderHighscores();
 loadStorage();
+
+viewScores = document.getElementById('viewHighscores');
+viewScores.addEventListener('click', viewHighscores);
+
+function viewHighscores(event) {
+    if (event.target.textContent !== null) {
+        // document.body.innerHTML = "";
+        highscoresDisplay = document.getElementById('highscoresList');
+        highscoresDisplay.style.display = 'block';
+        storageContent = JSON.parse(localStorage.getItem("user"));
+        storage = document.createElement('div');
+        storage.textContent = JSON.stringify(storageContent);
+        highscoresDisplay.appendChild(storage);
+
+        for (i >= 0; i = storageContent.length - 1; i--) {
+
+        }
+    }
+};

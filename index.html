@@ -10,18 +10,24 @@
 
 <body>
     <header>
-        <div>JavaScript Quiz</div>
-        <a href=#highscores>View Highscores</a>
+        <button id="viewHighscores">View Highscores</button>
         <div id="time-remaining"></div>
     </header>
     <main>
+        <div class="quizTitle">JavaScript Quiz</div>
+        <p id='descriptionText'>Once you click "Start Quiz", you will be presented with a series of questions. Each
+            correct answer earns you 20 points. Each incorrect answer will deduct 10 seconds from the timer. At the end
+            of the quiz, you will be able to see your score and save it to the highscores list. Good luck and happy
+            coding!</p>
         <button class="start-button">Start Quiz</button>
         <button class="tryAgainButton">Try Again</button>
         <div>
             <div id="quizQuestions"></div>
-            <div id="quiz-choices"></div>
+            <div id="quiz-choices">
+            </div>
         </div>
         <div id="endScore"></div>
+        <div id="highscoresList">Highscores</div>
     </main>
 
     <script src="assets/js/script.js"></script>

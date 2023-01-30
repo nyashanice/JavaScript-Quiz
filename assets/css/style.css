@@ -1,0 +1,47 @@
+header {
+    display: inline;
+}
+
+main {
+    text-align: center;
+    margin-top: 70px;
+}
+
+#quizQuestions {
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+.start-button {
+    background-color: #F192E8;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.start-button:hover {
+    text-shadow: 2px 2px white;
+}
+
+.quizTitle {
+    font-size: 50px;
+    font-family: 'Chalkduster', 'Copperplate', sans-serif;
+}
+
+p {
+    margin: 10px 100px 10px;
+}
+
+#viewHighscores {
+    background-color: white;
+    border: none;
+}
+
+#viewHighscores:hover {
+    color: gray;
+}
+
+#highscoresList {
+    display: none;
+}
