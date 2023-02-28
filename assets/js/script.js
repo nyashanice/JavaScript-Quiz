@@ -26,19 +26,36 @@ var pointsArr = [];
 // storing questions with a question prompt, answer choices to choose from, and a correct answer
 questionsArr = [
   {
-    prompt: "What is my name?",
-    choices: ["Nya", "Tomato", "Potato", "Cheese"],
-    correctAnswer: "Nya",
+    prompt: "Commonly used data types do NOT include:",
+    choices: ["strings", "booleans", "alerts", "numbers"],
+    correctAnswer: "alerts",
   },
   {
-    prompt: "What is my last?",
-    choices: ["Tyus", "Acovado", "Lime", "Orange"],
-    correctAnswer: "Tyus",
+    prompt: "The condition of an if/else statement is enclosed with:",
+    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
+    correctAnswer: "parentheses",
   },
   {
-    prompt: "How old am I?",
-    choices: [23, 22, 21, 20],
-    correctAnswer: 23,
+    prompt: "Arrays in JavaScript can be used to hold:",
+    choices: [
+      "numbers and strings",
+      "booleans",
+      "other arrays",
+      "all of the above",
+    ],
+    correctAnswer: "all of the above",
+  },
+  {
+    prompt:
+      "String values must be enclosed within ______ when being assigned to variables.",
+    choices: ["commas", "curly brackets", "parentheses", "quotes"],
+    correctAnswer: "quotes",
+  },
+  {
+    prompt:
+      "A very useful tool during development and debugging for printing content to the debugger is:",
+    choices: ["JavaScript", "terminal/bash", "for loop", "console.log"],
+    correctAnswer: "console.log",
   },
 ];
 
